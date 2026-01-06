@@ -107,7 +107,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
 
-            <h1 class="title is-2 publication-title" style="margin-left: -25px; margin-right: -25px; font-size: 2.5rem;">MeanAudio: Fast and Faithful Text-to-Audio Generation with Mean Flows</h1>
+            <h1 class="title is-2 publication-title" style="margin-left: -25px; margin-right: -25px; font-size: 2.5rem;">Audio ControlNet for Fine-Grained Audio Generation and Editing</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <!-- <span class="author-block">
@@ -191,9 +191,10 @@
       <p>
         <div class="content has-text-justified" style="margin: 0 0;">
           <br>
-          MeanAudio is a novel MeanFlow-based model tailored for fast and faithful text-to-audio generation. 
-          It can synthesize realistic audio in a single step, achieving a real-time factor (RTF) of 0.013 on a single NVIDIA 3090 GPU.
-          Moreover, it also demonstrates strong performance in multi-step generation. 
+         This work studies fine-grained text-to-audio (T2A) generation with explicit control over key audio attributes, including loudness, pitch, and sound events. 
+         Instead of retraining models for individual control types, a ControlNet-based framework is built on top of pre-trained T2A backbones to enable flexible and extensible controllable generation. 
+         Two designs, T2A-ControlNet and the more lightweight T2A-Adapter, are introduced. With only 38M additional parameters, T2A-Adapter achieves state-of-the-art performance on AudioSet-Strong while maintaining strong control ability.
+         The framework is further extended to audio editing, enabling the insertion and removal of audio events at specified time locations.
           <br>
         </div>
       </p>
