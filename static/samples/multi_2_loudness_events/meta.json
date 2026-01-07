@@ -1,0 +1,8 @@
+{
+  "control": [
+    "loudness",
+    "events"
+  ],
+  "caption": "Music and sizzling sounds accompany a man singing and speaking, and slapping is heard.",
+  "events": "{\"Sizzle\": [[0.024, 9.969]], \"Male speech, man speaking\": [[5.693, 5.913]]}"
+}

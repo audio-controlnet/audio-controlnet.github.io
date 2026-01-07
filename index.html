@@ -120,6 +120,13 @@
       max-width: 150px;
     }
 
+    .audio-table-multi th:nth-child(3),
+    .audio-table-multi td:nth-child(3) {
+      width: 400px;
+      min-width: 400px;
+      max-width: 400px;
+    }
+
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -140,7 +147,10 @@
           <div class="column has-text-centered">
 
             <h1 class="title is-2 publication-title" style="margin-left: -25px; margin-right: -25px; font-size: 2.5rem;">Audio ControlNet for Fine-Grained Audio Generation and Editing</h1>
-            <div class="is-size-5 publication-authors">
+            <div class="is-size-6 has-text-grey" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+              <em>Under Peer Review</em>
+            </div>
+            <div class="is-size-5 publication-authors"></div>
               <!-- Paper authors -->
               <!-- <span class="author-block">
                 <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
@@ -409,31 +419,7 @@
                 <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/YCAbXVOWLYps.wav"></audio></td>
                 <td><audio controls src="static/samples/EzAudio-XL/loudness/YCAbXVOWLYps.wav"></audio></td>
                 <td><audio controls src="static/samples/GT/loudness/YCAbXVOWLYps.flac"></audio></td>
-              </tr>
-              
-              <tr>
-                <td>Conversations, laughter, coughing, and mechanisms are heard among human voices.</td>
-                <td>
-                  <img src="static/images/loudness/Yiwq_j4WLMfE.png" />
-                </td>
-                <td><audio controls src="static/samples/T2A-Adapter-loudness/loudness/Yiwq_j4WLMfE.wav"></audio></td>
-                <td><audio controls src="static/samples/T2A-ControlNet-loudness/loudness/Yiwq_j4WLMfE.wav"></audio></td>
-                <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/Yiwq_j4WLMfE.wav"></audio></td>
-                <td><audio controls src="static/samples/EzAudio-XL/loudness/Yiwq_j4WLMfE.wav"></audio></td>
-                <td><audio controls src="static/samples/GT/loudness/Yiwq_j4WLMfE.flac"></audio></td>
-              </tr>
-              
-              <tr>
-                <td>A man is speaking, breathing, writing, and making noises in a quiet room with a sine wave sound.</td>
-                <td>
-                  <img src="static/images/loudness/Yggwr-Ixz730.png" />
-                </td>
-                <td><audio controls src="static/samples/T2A-Adapter-loudness/loudness/Yggwr-Ixz730.wav"></audio></td>
-                <td><audio controls src="static/samples/T2A-ControlNet-loudness/loudness/Yggwr-Ixz730.wav"></audio></td>
-                <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/Yggwr-Ixz730.wav"></audio></td>
-                <td><audio controls src="static/samples/EzAudio-XL/loudness/Yggwr-Ixz730.wav"></audio></td>
-                <td><audio controls src="static/samples/GT/loudness/Yggwr-Ixz730.flac"></audio></td>
-              </tr>              
+              </tr>          
                                                                                     
             </tbody>
           </table>
@@ -480,18 +466,6 @@
               </tr>
               
               <tr>
-                <td>A woman speaks while using an electric toothbrush.</td>
-                <td>
-                  <img src="static/images/pitch/Yl7g70mE0wAc.png" />
-                </td>
-                <td><audio controls src="static/samples/T2A-Adapter-pitch/pitch/Yl7g70mE0wAc.wav"></audio></td>
-                <td><audio controls src="static/samples/T2A-ControlNet-pitch/pitch/Yl7g70mE0wAc.wav"></audio></td>
-                <td><audio controls src="static/samples/FluxAudio/pitch/Yl7g70mE0wAc.wav"></audio></td>
-                <td><audio controls src="static/samples/EzAudio-XL/pitch/Yl7g70mE0wAc.wav"></audio></td>
-                <td><audio controls src="static/samples/GT/pitch/Yl7g70mE0wAc.flac"></audio></td>
-              </tr>
-              
-              <tr>
                 <td>A man is speaking, breathing, and answering the phone while other sounds like clicking and thumping occur.</td>
                 <td>
                   <img src="static/images/pitch/YnpiQABkKFHo.png" />
@@ -515,17 +489,6 @@
                 <td><audio controls src="static/samples/GT/pitch/Y_z4obCUqXss.flac"></audio></td>
               </tr>
               
-              <tr>
-                <td>A fire alarm goes off while music and a female singer is playing.</td>
-                <td>
-                  <img src="static/images/pitch/YAzhfZ8rNhRk.png" />
-                </td>
-                <td><audio controls src="static/samples/T2A-Adapter-pitch/pitch/YAzhfZ8rNhRk.wav"></audio></td>
-                <td><audio controls src="static/samples/T2A-ControlNet-pitch/pitch/YAzhfZ8rNhRk.wav"></audio></td>
-                <td><audio controls src="static/samples/FluxAudio/pitch/YAzhfZ8rNhRk.wav"></audio></td>
-                <td><audio controls src="static/samples/EzAudio-XL/pitch/YAzhfZ8rNhRk.wav"></audio></td>
-                <td><audio controls src="static/samples/GT/pitch/YAzhfZ8rNhRk.flac"></audio></td>
-              </tr>
                                                                                 
             </tbody>
           </table>
@@ -535,6 +498,152 @@
   </div>
 </section>
 
+
+
+<!-- Multi-condition Control -->
+<section class="section hero is-light">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-fullwidth">
+        <h2 class="title is-3">Multi-condition Control</h2>
+        <br>
+        <!-- <i>GT represents real audio samples taken from the AudioCaps test set.</i> -->
+        <div class="content has-text-justified">
+          <table class="table is-bordered is-narrow is-hoverable is-fullwidth audio-table audio-table-multi">
+            <thead>
+              <br>
+              <tr>
+                <th>Caption</th>
+                <th>Input Controls (Loudness+Events)</th>
+                <th>Generated Audio <br> (T2A-Adapter)</th>
+                <th>GT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Telephone ringing, dialing, and speech occur in a small room amidst laughter and hubbub.</td>
+                <td>
+                  <div>
+                    <strong>Loudness</strong><br>
+                    <img src="static/samples/multi_1_loudness_events/ref_loudness.png" style="width: 60%;"/>
+                  </div>
+                  <div>
+                    <strong>Sound events</strong><br>
+                    Telephone bell ringing: 0.52-1.43,4.14-5.05
+                    Speech: 5.05-6.54
+                    Male speech, man speaking: 7.59-10.0
+                    <br>
+                    <img src="static/samples/multi_1_loudness_events/events.png" />
+                  </div>
+                </td>
+                <td>
+                  <audio controls src="static/samples/multi_1_loudness_events/output.wav"></audio>
+                  <div>
+                    <strong>Loudness (Generated audio)</strong><br>
+                    <img src="static/samples/multi_1_loudness_events/output_loudness.png" style="width: 60%;"/>
+                  </div>
+                </td>
+                <td><audio controls src="static/samples/multi_1_loudness_events/YTZWX4hY3Rw0.flac"></audio></td>
+              </tr>
+
+              <tr>
+                <td>Music and sizzling sounds accompany a man singing and speaking, and slapping is heard.</td>
+                <td>
+                  <div>
+                    <strong>Loudness</strong><br>
+                    <img src="static/samples/multi_2_loudness_events/ref_loudness.png" style="width: 60%;"/>
+                  </div>
+                  <div>
+                    <strong>Sound events</strong><br>
+                    Sizzle: 0.02-9.97
+                    Male speech, man speaking: 5.69-5.91
+                    <br>
+                    <img src="static/samples/multi_2_loudness_events/events.png" />
+                  </div>
+                </td>
+                <td>
+                  <audio controls src="static/samples/multi_2_loudness_events/output.wav"></audio>
+                  <div>
+                    <strong>Loudness (Generated audio)</strong><br>
+                    <img src="static/samples/multi_2_loudness_events/output_loudness.png" style="width: 60%;"/>
+                  </div>
+                </td>
+                <td><audio controls src="static/samples/multi_2_loudness_events/YC-dIMkZFrIw.flac"></audio></td>
+              </tr>
+
+              <tr>
+                <td>People are speaking outside and dogs barking.</td>
+                <td>
+                  <div>
+                    <strong>Loudness</strong><br>
+                    <img src="static/samples/multi_3_loudness_events/ref_loudness.png" style="width: 60%;"/>
+                  </div>
+                  <div>
+                    <strong>Sound events</strong><br>
+                    Telephone bell ringing: 0.52-1.43,4.14-5.05
+                    Speech: 5.05-6.54
+                    Male speech, man speaking: 7.59-10.0
+                    <br>
+                    <img src="static/samples/multi_3_loudness_events/events.png" />
+                  </div>
+                </td>
+                <td>
+                  <audio controls src="static/samples/multi_3_loudness_events/output.wav"></audio>
+                  <div>
+                    <strong>Loudness (Generated audio)</strong><br>
+                    <img src="static/samples/multi_3_loudness_events/output_loudness.png" style="width: 60%;"/>
+                  </div>
+                </td>
+                <td><audio controls src="static/samples/multi_3_loudness_events/YMSY3Z4yTgXU.flac"></audio></td>
+              </tr>
+                                                                                    
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fine-grained Audio Editing -->
+<!-- <section class="section hero is-light">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-fullwidth">
+        <h2 class="title is-3">Fine-grained Audio Editing</h2>
+        <br>
+        <div class="content has-text-justified">
+          <table class="table is-bordered is-narrow is-hoverable is-fullwidth audio-table audio-table-edit">
+            <thead>
+              <br>
+              <tr>
+                <th>Caption</th>
+                <th>Input Controls</th>
+                <th>Generated Audio <br> (T2A-Adapter)</th>
+                <th>GT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>People speak and clap, a child speaks and a camera clicks.</td>
+                <td>
+                  <div>
+                    Female speech, woman speaking: 0.00s-3.97s, 7.91s-8.16s, 8.19s-9.65s<br>
+                    Child speech, kid speaking: 9.72s-10.00s<br>
+                  </div>
+                  <img src="static/images/events/Y-jaY3LS3Dv0.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-events/events/Y-jaY3LS3Dv0.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/events/Y-jaY3LS3Dv0.flac"></audio></td>
+              </tr>
+                                                                                    
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 
 <!-- Overall architecture-->
  <!-- add a image here -->  

@@ -1,0 +1,8 @@
+{
+  "control": [
+    "loudness",
+    "events"
+  ],
+  "caption": "People are speaking outside and dogs barking.",
+  "events": "{\"Dog\": [[2.357, 2.738], [3.147, 4.864]], \"Speech\": [[0.845, 1.499]], \"Male speech, man speaking\": [[5.245, 6.049], [7.82, 8.883]]}"
+}

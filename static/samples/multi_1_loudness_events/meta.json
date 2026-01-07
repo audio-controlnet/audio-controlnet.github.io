@@ -1,0 +1,8 @@
+{
+  "control": [
+    "loudness",
+    "events"
+  ],
+  "caption": "Telephone ringing, dialing, and speech occur in a small room amidst laughter and hubbub.",
+  "events": "{\"Telephone bell ringing\": [[0.52, 1.433], [4.142, 5.055]], \"Speech\": [[5.047, 6.535]], \"Male speech, man speaking\": [[7.591, 10.0]]}"
+}
