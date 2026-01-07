@@ -46,20 +46,20 @@
     }
     .audio-table th,
     .audio-table td {
-      border-left: none !important;
-      border-right: none !important;
+      border-left: none;
+      border-right: none;
     }
     .audio-table th:not(:first-child),
     .audio-table td:not(:first-child) {
-      border-left: none !important;
+      border-left: none;
     }
     .audio-table.is-bordered th,
     .audio-table.is-bordered td {
-      border-left: none !important;
-      border-right: none !important;
+      border-left: none;
+      border-right: none;
     }
     .audio-table th {
-      text-align: center !important;
+      text-align: center;
       vertical-align: middle;
       background-color: #f5f5f5;
       font-weight: bold;
@@ -83,11 +83,43 @@
       max-width: 150px;
     }
     .audio-table tbody tr {
-      background-color: #f5f5f5 !important;
+      background-color: #f5f5f5;
     }
     .audio-table tbody tr:hover {
-      background-color: #f0f8ff !important;
+      background-color: #f0f8ff;
     }
+    /* 固定第一列 100px */
+    .audio-table th:nth-child(1),
+    .audio-table td:nth-child(1) {
+      width: 200px;
+      min-width: 200px;
+      max-width: 200px;
+      font-style: italic;
+    }
+
+    /* 固定第二列 200px */
+    .audio-table th:nth-child(2),
+    .audio-table td:nth-child(2) {
+      width: 400px;
+      min-width: 400px;
+      max-width: 400px;
+    }
+    
+    .audio-table-small th:nth-child(2),
+    .audio-table-small td:nth-child(2) {
+      width: 250px;
+      min-width: 250px;
+      max-width: 250px;
+    }
+    
+    /* 第 3 列及以后：150px */
+    .audio-table th:nth-child(n+3),
+    .audio-table td:nth-child(n+3) {
+      width: 150px;
+      min-width: 150px;
+      max-width: 150px;
+    }
+
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -184,7 +216,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
     
-      <div style="width: 65%; height: auto; margin: 0 auto;"> 
+      <div style="width: 85%; height: auto; margin: 0 auto;"> 
         <img src="static/images/tasks.png" alt="performance" style="width: 100%; height: auto;">
       </div>
 
@@ -204,12 +236,12 @@
 </section>
 <!-- End overall performance -->
 
-<!-- Audio samples -->
+<!-- Sound Events Control -->
 <section class="section hero is-light">
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-fullwidth">
-        <h2 class="title is-3">Single-Step Audio Generation</h2>
+        <h2 class="title is-3">Sound Events Controlled Audio Generation</h2>
         <br>
         <!-- <i>GT represents real audio samples taken from the AudioCaps test set.</i> -->
         <div class="content has-text-justified">
@@ -218,83 +250,100 @@
               <br>
               <tr>
                 <th>Caption</th>
-                <th>MeanAudio (Ours)<br>1NFE</th>
-                <th>AudioLCM<br>1NFE</th>
-                <th>ConsistencyTTA<br>1NFE</th>
+                <th>Sound Events Roll</th>
+                <th>T2A-Adapter <br> (Ours)</th>
+                <th>T2A-ControlNet <br> (Ours)</th>
+                <th>AudioComposer</th>
+                <th>EzAudio-XL</th>
                 <th>GT</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>A speech and gunfire followed by a gun being loaded</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/YpuZL08fzpXk.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/YpuZL08fzpXk.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/YpuZL08fzpXk.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YpuZL08fzpXk.wav"></audio></td>
+                <td>People speak and clap, a child speaks and a camera clicks.</td>
+                <td>
+                  <div>
+                    Female speech, woman speaking: 0.00s-3.97s, 7.91s-8.16s, 8.19s-9.65s<br>
+                    Child speech, kid speaking: 9.72s-10.00s<br>
+                  </div>
+                  <img src="static/images/events/Y-jaY3LS3Dv0.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-events/events/Y-jaY3LS3Dv0.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-events/events/Y-jaY3LS3Dv0.wav"></audio></td>
+                <td><audio controls src="static/samples/AudioComposer-S/events/Y-jaY3LS3Dv0.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/events/Y-jaY3LS3Dv0.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/events/Y-jaY3LS3Dv0.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Some humming followed by a toilet flushing</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/Y2ErfX6ZT5pM.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/Y2ErfX6ZT5pM.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/Y2ErfX6ZT5pM.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/Y2ErfX6ZT5pM.wav"></audio></td>
+                <td>Background noise, tapping, and cat sounds are interspersed with purring.</td>
+                <td>
+                  <div>
+                    Cat: 0.98s-2.29s, 9.03s-10.00s<br>
+                  </div>
+                  <img src="static/images/events/YzCdOEvduBTo.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-events/events/YzCdOEvduBTo.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-events/events/YzCdOEvduBTo.wav"></audio></td>
+                <td><audio controls src="static/samples/AudioComposer-S/events/YzCdOEvduBTo.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/events/YzCdOEvduBTo.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/events/YzCdOEvduBTo.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Typing on a keyboard</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/YDAN1t9ukkg0.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/YDAN1t9ukkg0.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/YDAN1t9ukkg0.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YDAN1t9ukkg0.wav"></audio></td>
+                <td>Animals, dogs, and people are growling, shouting, and speaking.</td>
+                <td>
+                  <div>
+                    Dog: 0.01s-0.17s, 0.72s-1.53s, 1.98s-3.14s, 3.57s-4.56s, 4.87s-5.96s, 6.39s-7.62s, 8.07s-8.98s, 9.30s-9.88s<br>
+                    Speech: 0.15s-0.74s, 1.61s-1.95s, 4.58s-4.89s, 7.63s-8.02s, 9.01s-9.29s<br>
+                    Male speech, man speaking: 3.20s-3.53s, 5.98s-6.38s, 9.88s-10.00s<br>
+                  </div>
+                  <img src="static/images/events/YNKfyi7q0JNU.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-events/events/YNKfyi7q0JNU.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-events/events/YNKfyi7q0JNU.wav"></audio></td>
+                <td><audio controls src="static/samples/AudioComposer-S/events/YNKfyi7q0JNU.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/events/YNKfyi7q0JNU.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/events/YNKfyi7q0JNU.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Rain falling on a hard surface as thunder roars in the distance</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/YESjMIqrvRj4.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/YESjMIqrvRj4.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/YESjMIqrvRj4.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YESjMIqrvRj4.wav"></audio></td>
+                <td>Water flows and dishes clatter with child speech and laughter.</td>
+                <td>
+                  <div>
+                    Child speech, kid speaking: 0.00s-1.50s, 1.73s-2.12s, 2.94s-3.54s, 7.80s-8.49s<br>
+                    Dishes, pots, and pans: 1.98s-2.16s, 3.18s-3.30s, 4.77s-5.08s, 5.71s-5.83s, 6.08s-6.24s, 6.42s-7.01s<br>
+                    Male speech, man speaking: 8.55s-9.56s<br>
+                    Water tap, faucet: 0.00s-10.00s<br>
+                  </div>
+                  <img src="static/images/events/YTim7zUFj1f4.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-events/events/YTim7zUFj1f4.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-events/events/YTim7zUFj1f4.wav"></audio></td>
+                <td><audio controls src="static/samples/AudioComposer-S/events/YTim7zUFj1f4.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/events/YTim7zUFj1f4.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/events/YTim7zUFj1f4.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Food sizzling and oil popping</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/YAJtNitYMa1I.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/YAJtNitYMa1I.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/YAJtNitYMa1I.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YAJtNitYMa1I.wav"></audio></td>
+                <td>Speech babble and clattering dishes and silverware can be heard, along with a child's voice.</td>
+                <td>
+                  <div>
+                    Dishes, pots, and pans: 0.85s-0.97s, 1.39s-1.50s, 7.72s-7.87s<br>
+                    Male speech, man speaking: 0.75s-1.17s<br>
+                    Cutlery, silverware: 4.69s-4.84s, 5.30s-5.52s<br>
+                    Female speech, woman speaking: 1.63s-3.41s<br>
+                    Child speech, kid speaking: 8.76s-9.35s<br>
+                  </div>
+                  <img src="static/images/events/YVKGWfdNBq3M.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-events/events/YVKGWfdNBq3M.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-events/events/YVKGWfdNBq3M.wav"></audio></td>
+                <td><audio controls src="static/samples/AudioComposer-S/events/YVKGWfdNBq3M.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/events/YVKGWfdNBq3M.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/events/YVKGWfdNBq3M.flac"></audio></td>
               </tr>
-              <tr>
-                <td>Pots and dishes clanking as a man talks followed by liquid pouring into a container</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/Y8o-Y4QP8LWs.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/Y8o-Y4QP8LWs.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/Y8o-Y4QP8LWs.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/Y8o-Y4QP8LWs.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>A few seconds of silence then a rasping sound against wood</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/YKJhGuhNHToA.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/YKJhGuhNHToA.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/YKJhGuhNHToA.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YKJhGuhNHToA.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>A man speaks as he gives a speech and then the crowd cheers</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/Y4CAMv5nlr-0.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/Y4CAMv5nlr-0.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/Y4CAMv5nlr-0.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/Y4CAMv5nlr-0.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>A goat bleating repeatedly</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/YVMsbrcHPBfk.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/YVMsbrcHPBfk.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/YVMsbrcHPBfk.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YVMsbrcHPBfk.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>Tires squealing followed by an engine revving</td>
-                <td><audio controls src="static/samples/meanaudio_ac_1nfe/YV4PLSw_WzVw.flac"></audio></td>
-                <td><audio controls src="static/samples/audiolcm_1nfe/YV4PLSw_WzVw.wav"></audio></td>
-                <td><audio controls src="static/samples/consistencytta_1nfe/YV4PLSw_WzVw.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YV4PLSw_WzVw.wav"></audio></td>
-              </tr>
+                                                                                    
             </tbody>
           </table>
         </div>
@@ -303,95 +352,89 @@
   </div>
 </section>
 
-<!-- Multi-step audio samples -->
+<!-- Loudness Control -->
 <section class="section hero is-light">
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-fullwidth">
-        <h2 class="title is-3">Multi-Step Audio Generation</h2>
+        <h2 class="title is-3">Loudness Controlled Audio Generation</h2>
         <br>
+        <!-- <i>GT represents real audio samples taken from the AudioCaps test set.</i> -->
         <div class="content has-text-justified">
-          <table class="table is-bordered is-narrow is-hoverable is-fullwidth audio-table">
+          <table class="table is-bordered is-narrow is-hoverable is-fullwidth audio-table audio-table-small">
             <thead>
+              <br>
               <tr>
                 <th>Caption</th>
-                <th>MeanAudio (Ours)<br>25NFE</th>
-                <th>GenAU<br>200NFE</th>
-                <th>AudioLDM<br>200NFE</th>
+                <th>Loudness</th>
+                <th>T2A-Adapter <br> (Ours)</th>
+                <th>T2A-ControlNet <br> (Ours)</th>
+                <th>EzAudio-L-Energy</th>
+                <th>EzAudio-XL</th>
                 <th>GT</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>A speech and gunfire followed by a gun being loaded</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/YpuZL08fzpXk.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/YpuZL08fzpXk.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/YpuZL08fzpXk.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YpuZL08fzpXk.wav"></audio></td>
+                <td>A man speaks and an arrow is shot as more speech is heard.</td>
+                <td>
+                  <img src="static/images/loudness/Y3r5wKJm2uBs.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-loudness/loudness/Y3r5wKJm2uBs.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-loudness/loudness/Y3r5wKJm2uBs.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/Y3r5wKJm2uBs.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/loudness/Y3r5wKJm2uBs.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/loudness/Y3r5wKJm2uBs.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Some humming followed by a toilet flushing</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/Y2ErfX6ZT5pM.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/Y2ErfX6ZT5pM.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/Y2ErfX6ZT5pM.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/Y2ErfX6ZT5pM.wav"></audio></td>
+                <td>A humming noise is heard with dishes, pots, and pans being moved on a surface.</td>
+                <td>
+                  <img src="static/images/loudness/YkqMITdlDDws.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-loudness/loudness/YkqMITdlDDws.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-loudness/loudness/YkqMITdlDDws.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/YkqMITdlDDws.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/loudness/YkqMITdlDDws.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/loudness/YkqMITdlDDws.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Typing on a keyboard</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/YDAN1t9ukkg0.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/YDAN1t9ukkg0.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/YDAN1t9ukkg0.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YDAN1t9ukkg0.wav"></audio></td>
+                <td>Dogs are whimpering, howling, and other domestic animals are heard.</td>
+                <td>
+                  <img src="static/images/loudness/YCAbXVOWLYps.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-loudness/loudness/YCAbXVOWLYps.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-loudness/loudness/YCAbXVOWLYps.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/YCAbXVOWLYps.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/loudness/YCAbXVOWLYps.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/loudness/YCAbXVOWLYps.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Rain falling on a hard surface as thunder roars in the distance</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/YESjMIqrvRj4.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/YESjMIqrvRj4.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/YESjMIqrvRj4.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YESjMIqrvRj4.wav"></audio></td>
+                <td>Conversations, laughter, coughing, and mechanisms are heard among human voices.</td>
+                <td>
+                  <img src="static/images/loudness/Yiwq_j4WLMfE.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-loudness/loudness/Yiwq_j4WLMfE.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-loudness/loudness/Yiwq_j4WLMfE.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/Yiwq_j4WLMfE.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/loudness/Yiwq_j4WLMfE.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/loudness/Yiwq_j4WLMfE.flac"></audio></td>
               </tr>
+              
               <tr>
-                <td>Food sizzling and oil popping</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/YAJtNitYMa1I.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/YAJtNitYMa1I.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/YAJtNitYMa1I.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YAJtNitYMa1I.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>Pots and dishes clanking as a man talks followed by liquid pouring into a container</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/Y8o-Y4QP8LWs.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/Y8o-Y4QP8LWs.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/Y8o-Y4QP8LWs.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/Y8o-Y4QP8LWs.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>A few seconds of silence then a rasping sound against wood</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/YKJhGuhNHToA.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/YKJhGuhNHToA.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/YKJhGuhNHToA.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YKJhGuhNHToA.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>A man speaks as he gives a speech and then the crowd cheers</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/Y4CAMv5nlr-0.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/Y4CAMv5nlr-0.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/Y4CAMv5nlr-0.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/Y4CAMv5nlr-0.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>A goat bleating repeatedly</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/YVMsbrcHPBfk.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/YVMsbrcHPBfk.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/YVMsbrcHPBfk.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YVMsbrcHPBfk.wav"></audio></td>
-              </tr>
-              <tr>
-                <td>Tires squealing followed by an engine revving</td>
-                <td><audio controls src="static/samples/meanaudio_ac_25nfe/YV4PLSw_WzVw.flac"></audio></td>
-                <td><audio controls src="static/samples/genau_200nfe/YV4PLSw_WzVw.wav"></audio></td>
-                <td><audio controls src="static/samples/audioldm_200nfe/YV4PLSw_WzVw.wav"></audio></td>
-                <td><audio controls src="static/samples/gt/YV4PLSw_WzVw.wav"></audio></td>
-              </tr>
+                <td>A man is speaking, breathing, writing, and making noises in a quiet room with a sine wave sound.</td>
+                <td>
+                  <img src="static/images/loudness/Yggwr-Ixz730.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-loudness/loudness/Yggwr-Ixz730.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-loudness/loudness/Yggwr-Ixz730.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-L-Energy/loudness/Yggwr-Ixz730.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/loudness/Yggwr-Ixz730.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/loudness/Yggwr-Ixz730.flac"></audio></td>
+              </tr>              
+                                                                                    
             </tbody>
           </table>
         </div>
@@ -399,8 +442,98 @@
     </div>
   </div>
 </section>
-<!-- End audio samples -->
 
+
+<!-- Loudness Control -->
+<section class="section hero is-light">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-fullwidth">
+        <h2 class="title is-3">Pitch Controlled Audio Generation</h2>
+        <br>
+        <!-- <i>GT represents real audio samples taken from the AudioCaps test set.</i> -->
+        <div class="content has-text-justified">
+          <table class="table is-bordered is-narrow is-hoverable is-fullwidth audio-table audio-table-small">
+            <thead>
+              <br>
+              <tr>
+                <th>Caption</th>
+                <th>Pitch</th>
+                <th>T2A-Adapter <br> (Ours)</th>
+                <th>T2A-ControlNet <br> (Ours)</th>
+                <th>FluxAudio</th>
+                <th>EzAudio-XL</th>
+                <th>GT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>An alarm and beeping sounds alternate with music and ratcheting noises.</td>
+                <td>
+                  <img src="static/images/pitch/Y1isuXShxzOY.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-pitch/pitch/Y1isuXShxzOY.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-pitch/pitch/Y1isuXShxzOY.wav"></audio></td>
+                <td><audio controls src="static/samples/FluxAudio/pitch/Y1isuXShxzOY.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/pitch/Y1isuXShxzOY.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/pitch/Y1isuXShxzOY.flac"></audio></td>
+              </tr>
+              
+              <tr>
+                <td>A woman speaks while using an electric toothbrush.</td>
+                <td>
+                  <img src="static/images/pitch/Yl7g70mE0wAc.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-pitch/pitch/Yl7g70mE0wAc.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-pitch/pitch/Yl7g70mE0wAc.wav"></audio></td>
+                <td><audio controls src="static/samples/FluxAudio/pitch/Yl7g70mE0wAc.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/pitch/Yl7g70mE0wAc.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/pitch/Yl7g70mE0wAc.flac"></audio></td>
+              </tr>
+              
+              <tr>
+                <td>A man is speaking, breathing, and answering the phone while other sounds like clicking and thumping occur.</td>
+                <td>
+                  <img src="static/images/pitch/YnpiQABkKFHo.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-pitch/pitch/YnpiQABkKFHo.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-pitch/pitch/YnpiQABkKFHo.wav"></audio></td>
+                <td><audio controls src="static/samples/FluxAudio/pitch/YnpiQABkKFHo.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/pitch/YnpiQABkKFHo.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/pitch/YnpiQABkKFHo.flac"></audio></td>
+              </tr>
+              
+              <tr>
+                <td>Various mechanisms make sounds in the background while a vacuum cleaner is used and there is female speech.</td>
+                <td>
+                  <img src="static/images/pitch/Y_z4obCUqXss.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-pitch/pitch/Y_z4obCUqXss.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-pitch/pitch/Y_z4obCUqXss.wav"></audio></td>
+                <td><audio controls src="static/samples/FluxAudio/pitch/Y_z4obCUqXss.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/pitch/Y_z4obCUqXss.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/pitch/Y_z4obCUqXss.flac"></audio></td>
+              </tr>
+              
+              <tr>
+                <td>A fire alarm goes off while music and a female singer is playing.</td>
+                <td>
+                  <img src="static/images/pitch/YAzhfZ8rNhRk.png" />
+                </td>
+                <td><audio controls src="static/samples/T2A-Adapter-pitch/pitch/YAzhfZ8rNhRk.wav"></audio></td>
+                <td><audio controls src="static/samples/T2A-ControlNet-pitch/pitch/YAzhfZ8rNhRk.wav"></audio></td>
+                <td><audio controls src="static/samples/FluxAudio/pitch/YAzhfZ8rNhRk.wav"></audio></td>
+                <td><audio controls src="static/samples/EzAudio-XL/pitch/YAzhfZ8rNhRk.wav"></audio></td>
+                <td><audio controls src="static/samples/GT/pitch/YAzhfZ8rNhRk.flac"></audio></td>
+              </tr>
+                                                                                
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <!-- Overall architecture-->
@@ -414,15 +547,13 @@
       <p>
         <div class="content has-text-justified" style="margin: 0 0px;">
           <br>
-          MeanAudio is based on an enhanced Flux-style latent transformer, combining N1  audio/text joint blocks and N2 audio-only blocks.
-          It uses FLAN-T5 and CLAP to encode the textual captions. 
-          Conditioned on the encoded text and the timestep embeddings, MeanAudio regresses the average velocity field for fast and realistic audio generation.
+          The core idea is to introduce an auxiliary conditional network that injects conditions into the pretrained FluxAudio, enabling controllable audio generation without retraining the backbone. We introduce two variants of Audio ControlNet: T2A-ControlNet and T2A-Adapter. T2A-ControlNet replicates FluxAudio, including both MMDiT and DiT layers, and directly adds the processed latent to each layer in FluxAudio. T2A-Adapter employs a lightweight encoder to extract features from time-varying conditions. It extracts condition features and injects them into the latent of the backbone.
         </div>
       </p>
       <div style="width: 95%; height: auto; margin: 0 auto;"> 
         <br>
 
-        <img src="static/images/MeanAudio_new.png" alt="architecture" style="width: 100%; height: auto;">
+        <img src="static/images/structure.png" alt="architecture" style="width: 100%; height: auto;">
       </div>
 
     </div>
@@ -452,46 +583,18 @@
       <p>
         <div class="content has-text-justified" style="margin: 0 0px;">
           <br>
-          MeanAudio achieves state-of-the-art performance on single-step generation, and strong performance on multi-step generation. 
-          It delivers a real-time factor (RTF) of 0.013 on a single NVIDIA 3090 GPU, demonstrating a 100x speedup over existing diffusion-based models.
+          Our experiments demonstrate that both T2A-ControlNet and T2A-Adapter achieve consistent improvements in controlling loudness, pitch, and sound events. Notably, T2A-Adapter achieves state-of-the-art performance on the AudioSet-Strong in both event-level and segment-level F1 scores while introducing only 38M additional parameters. Subjective evaluations further indicate that our methods outperform all baseline models. 
         </div>
       </p>
       <div style="width: 100%; height: auto; margin: 0 auto;"> 
         <br>
 
-        <img src="static/images/main_table_new.png" alt="main table" style="width: 100%; height: auto;">
+        <img src="static/images/results.png" alt="main table" style="width: 100%; height: auto;">
       </div>
 
     </div>
   </div>
 </section>
-
-
-<!-- <h2 class="title is-3" style="text-align: center; margin-bottom: 1rem; margin-left: 0; margin-right: 0">
-  <br>
-Main Results</h2>
-
-<p>
-  <div class="content has-text-justified" style="margin: 0 560px;">
-    <br>
-   MeanAudio achieves state-of-the-art performance on single-step generation, and strong performance on multi-step generation. 
-   It delivers a real-time factor (RTF) of 0.013 on a single NVIDIA 3090 GPU, demonstrating a 100x speedup over existing diffusion-based models.
-    <br>
-  </div>
-</p> -->
-
-
-<!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-    
-      <div style="width: 100%; height: auto; margin: 0 auto;"> 
-        <img src="static/images/main_table.png" alt="main table" style="width: 100%; height: auto;">
-      </div>
-
-    </div>
-  </div>
-</section> -->
 
 
 <footer class="footer">
